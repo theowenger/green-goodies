@@ -1,0 +1,37 @@
+version: "3.7"
+services:
+  green_goodies_php:
+    container_name: green_goodies_php
+    build: ./docker/php
+    volumes:
+      - .:/srv
+    networks:
+      - green_goodies_network
+  green_goodies_nginx:
+    container_name: green_goodies_nginx
+    image: nginx:1.26.0
+    volumes:
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./public:/srv/public:ro
+    ports:
+      - "8340:80"
+    networks:
+      - green_goodies_network
+    depends_on:
+      - green_goodies_php
+  green_goodies_db:
+    container_name: green_goodies_db
+    image: mariadb
+    ports:
+      - "3336:3306"
+    networks:
+      - green_goodies_network
+    volumes:
+      - green_goodies_db_data:/var/lib/mysql
+    environment:
+      MARIADB_ROOT_PASSWORD: password
+
+volumes:
+  green_goodies_db_data:
+networks:
+  green_goodies_network:
