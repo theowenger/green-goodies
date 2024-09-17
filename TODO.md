@@ -1,13 +1,14 @@
 # BACK:
 
- - setup docker
- - setup symfony
- - installer dependance
- - creer les entitées
- - creer fichier de migration
- - connecter DB au projet
+ - setup docker **CHECK**
+ - setup symfony **CHECK**
+ - installer dependance **CHECK**
+ - creer les entitées **CHECK**
+ - creer fichier de migration **CHECK**
+ - connecter DB au projet **CHECK**
+ - creer les controllers **CHECK**
  - creer fixtures
- - creer les controllers
+ - gerer le hash du password
  - gerer le JWT
  - implementer le refresh token
  - securiser les controllers via le ROLE
@@ -15,10 +16,12 @@
 
 # FRONT:
 
- - creer les pages principales
- - creer header
- - creer footer
+ - creer les pages principales **CHECK**
+ - creer header **CHECK**
+ - creer footer **CHECK**
  - creer les composants
+
+ - CHANGER LES VALEURS EN DUR HEADER: <a href='/user/1/basket'>
 
 # Entity:
 
@@ -38,6 +41,13 @@ fullDescription
 price
 picture
 (stockQuantity?)
+
+## COMMAND:
+id
+date
+totalprice
+user (manyToOne)
+product (manyToMany)
 
 # PAGES:
 
@@ -67,4 +77,5 @@ picture
 
 - gerer la redirection en 404
 - probleme pour installer webpack et avoir le build avec image
-- 
+
+

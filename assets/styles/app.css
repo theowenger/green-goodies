@@ -22,4 +22,16 @@ body {
     justify-content: space-between;
     width: 40%;
     min-width: 500px;
+    a {
+     text-decoration: none;
+        color: inherit;
+        cursor: pointer;
+    }
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-right: 20px;
 }
