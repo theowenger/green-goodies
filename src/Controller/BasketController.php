@@ -8,11 +8,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class PouetController extends AbstractController
+class BasketController extends AbstractController
 {
-    #[Route('/pouet')]
-    public function index(): Response
+    #[Route('/user/{id}/basket', name: 'basket')]
+    public function index(int $id): Response
     {
-        return $this->render('pouet.html.twig');
+        return $this->render('basket.html.twig');
     }
 }
