@@ -3,6 +3,9 @@
 {% block title %}Home Page{% endblock %}
 
 {% block body %}
-    {{ dump(products) }}
-    <h1>home</h1>
+{#    {{ dump(products) }}#}
+    {% include 'components/hero-banner.html.twig' %}
+    {% include 'components/product-list.html.twig' with { products: products } %}
+    {% include 'components/conviction.html.twig' %}
+    {% include 'components/values.html.twig' %}
 {% endblock %}

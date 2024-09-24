@@ -7,11 +7,12 @@
  - creer fichier de migration **CHECK**
  - connecter DB au projet **CHECK**
  - creer les controllers **CHECK**
- - creer fixtures
+ - creer fixtures **CHECK**
+ - si le temps, ameliorer les fixtures pour + d'aleatoire
  - gerer le hash du password
  - gerer le JWT
  - implementer le refresh token
- - securiser les controllers via le ROLE
+ - securiser les controllers via le ROLE !!!
  - ...
 
 # FRONT:
@@ -26,12 +27,15 @@
 # Entity:
 
 ## USER:
+REFAIRE LA CLASSE AVEC make:user
 id
 mail
 password
 firstName
 lastName
 (adresse postale?)
+ROLES
+
 
 ## PRODUCT:
 id
@@ -40,7 +44,6 @@ shortDescription
 fullDescription
 price
 picture
-(stockQuantity?)
 
 ## COMMAND:
 id
@@ -48,6 +51,8 @@ date
 totalprice
 user (manyToOne)
 product (manyToMany)
+Si + plus de temps, stocker le prix du produit a l'achat 
+dans command_product
 
 # PAGES:
 
@@ -61,10 +66,10 @@ product (manyToMany)
 
 # Components:
 
-- navigation
-- hero header
-- footer
-- product list
+- navigation **CHECK (manque le responsive)**
+- hero header **CHECK**
+- footer **CHECK**
+- product list **CHECK**
 - product item
 - form add product
 - form login
@@ -76,6 +81,5 @@ product (manyToMany)
 # Questions pour David:
 
 - gerer la redirection en 404
-- probleme pour installer webpack et avoir le build avec image
 
 

@@ -1,10 +1,70 @@
-
-<div class="header-container">
+<div class="min-h-28 flex flex-row justify-between items-center px-12">
     <img src="{{ asset('build/images/logo.webp') }}" alt="logo" />
-    <nav class="navigation-container">
+    <div  class="md:hidden relative inline-block text-left">
+        <div>
+            <!-- Bouton déclencheur -->
+            <button
+                    type="button"
+                    class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                    id="menu-button"
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                    onclick="toggleMenu()"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Menu déroulant -->
+        <div
+                class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="menu-button"
+                id="dropdown-menu"
+        >
+            <div class="py-1" role="none">
+                <a href="/" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-0">Nos Produits</a>
+                <a href="/user/1/basket" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-1">Mon panier</a>
+                <a href="/user/1/account" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-2">Mon compte</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-2">Déconnexion</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="hidden md:flex w-7/12 max-w-custom-600 justify-between" id="nav-menu">
         <a href="/">Nos Produits</a>
         <a href='/user/1/basket'>Mon panier</a>
         <a href='/user/1/account'>Mon compte</a>
-        <a>Déconnexion</a>
+        <a href='#'>Déconnexion</a>
     </nav>
 </div>
+
+<script>
+    function toggleMenu() {
+        const dropdownMenu = document.getElementById('dropdown-menu');
+        const menuButton = document.getElementById('menu-button');
+
+        // Toggle visibility
+        dropdownMenu.classList.toggle('hidden');
+
+        // Change aria-expanded value for accessibility
+        const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+        menuButton.setAttribute('aria-expanded', !isExpanded);
+    }
+
+    // Close the dropdown if clicked outside
+    document.addEventListener('click', function(event) {
+        console.log("button")
+        const dropdownMenu = document.getElementById('dropdown-menu');
+        const menuButton = document.getElementById('menu-button');
+
+        if (!menuButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+            dropdownMenu.classList.add('hidden');
+            menuButton.setAttribute('aria-expanded', 'false');
+        }
+    });
+</script>

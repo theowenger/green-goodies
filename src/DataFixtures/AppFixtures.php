@@ -27,9 +27,8 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 
-    private function loadUsers(int $quantity,ObjectManager $manager): void
+    private function loadUsers(int $quantity, ObjectManager $manager): void
     {
-
 
         for ($i = 0; $i < $quantity; $i++) {
             $password = "secret";
@@ -57,8 +56,26 @@ class AppFixtures extends Fixture
             $product->setName("product n°" . $i);
             $product->setPrice(random_int(1, 100));
             $product->setShortDescription("short description " . $i);
-            $product->setFullDescription("full description " . $i);
-            $product->setPicture("picture " . $i);
+            $product->setFullDescription("Lorem ipsum dolor sit amet, 
+            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+             et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+              ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+              dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+               pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
+               officia deserunt mollit anim id est laborum 
+               Lorem ipsum dolor sit amet, 
+            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+             et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+              ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+              dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+               pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui 
+               officia deserunt mollit anim id est laborum
+               " . $i);
+            if ($i % 2 === 0) {
+                $product->setPicture("https://lw-cdn.com/images/38199249477C/k_7014111c4828af10df8dff0a5a0bd9e0;w_1600;h_1600;q_100/8603079.jpg");
+            } else {
+                $product->setPicture("https://le-moderniste.com/cdn/shop/products/1005002718371815_images_6253e252a3e2a_1.webp?v=1649664617");
+            }
 
             $manager->persist($product);
         }
@@ -73,8 +90,8 @@ class AppFixtures extends Fixture
         $userRepository = $manager->getRepository(User::class);
         $productRepository = $manager->getRepository(Product::class);
 
-        $products = $productRepository->findAll();
         $users = $userRepository->findAll();
+        $products = $productRepository->findAll();
 
         foreach ($users as $user) {
             for ($i = 0; $i < $quantity; $i++) {
@@ -83,7 +100,7 @@ class AppFixtures extends Fixture
                 $command->setUser($user);
                 $command->setDate(date: new \DateTime());
                 $command->setTotalPrice(random_int(10, 1000));
-                for($j = 0; $j < 3; $j++) {
+                for ($j = 0; $j < 3; $j++) {
                     $randomProduct = $products[array_rand($products)];
                     $command->addProduct($randomProduct);
                 }

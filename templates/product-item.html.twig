@@ -3,5 +3,18 @@
 {% block title %}produit{% endblock %}
 
 {% block body %}
-    <h1>product item</h1>
+    <div class="flex flex-col lg:flex-row justify-between mb-96">
+        <img class="lg:w-3/6 object-cover" src="{{ product.picture }}" alt="{{ product.name }}">
+        <div class=" flex flex-col justify-between w-full max-w-[800px] mt-10 lg:mt-48 lg:mr-16 ml-10">
+            <div class="px-5">
+                <h3 class="font-medium text-3xl">{{ product.name }}</h3>
+                <p class="text-5xl font-light py-14">{{ product.price }}€</p>
+                <p>Description</p>
+                <p class="product-item-description">{{ product.fullDescription }}</p>
+            </div>
+            <div class="product-item-btn-container">
+                <button class="product-item-btn">Ajouter au panier</button>
+            </div>
+        </div>
+    </div>
 {% endblock %}
