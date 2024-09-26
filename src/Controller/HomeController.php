@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class HomeController extends AbstractController
 {
-    #[Route('/')]
+    #[Route('/', name: 'app_home')]
     public function __invoke(ProductRepository $productRepository): Response
     {
         $products = $productRepository->findAll();

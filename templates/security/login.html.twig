@@ -3,11 +3,11 @@
 {% block title %}Connexion{% endblock %}
 
 {% block body %}
-    <div class="flex flex-row">
-        <img src="{{ asset('build/images/conviction.webp') }}" alt="flower"/>
-        <div class=" w-full flex flex-col justify-start items-center pt-20">
-            <div class="w-1/2 flex flex-col justify-between items-stretch">
-                <h1 class="text-3xl">Connexion</h1>
+    <div class="flex flex-col md:flex-row justify-between w-full">
+        <img class="w-full max-h-64 md:w-3/6 md:max-h-[800px] object-cover" src="{{ asset('build/images/conviction.webp') }}" alt="flower"/>
+        <div class=" w-full flex flex-col justify-start items-center pt-5 md:pt-20">
+            <div class="w-8/12 flex flex-col justify-between items-stretch">
+                <h1 class="text-3xl mb-10">Connexion</h1>
 
                 {% if error %}
                     <div class="alert alert-danger">
@@ -17,18 +17,24 @@
 
 
                 {{ form_start(loginForm) }}
-                <div class="flex flex-col justify-between items-stretch w-full">
-                    {{ form_label(loginForm.email) }}
-                    {{ form_widget(loginForm.email, {'attr': {'class': 'border border-black rounded-md'}}) }}
+                <div class="flex flex-col justify-between items-stretch w-full mt-10">
+                    {{ form_label(loginForm.email, null, {'label_attr': {'class': 'text-slate-700'}}) }}
+                    {{ form_widget(loginForm.email, {'attr': {'class': 'border border-slate-600 h-16 text-3xl mt-5'}}) }}
                 </div>
-                <div class="flex flex-col justify-between items-stretch">
-                    {{ form_label(loginForm.password) }}
-                    {{ form_widget(loginForm.password, {'attr': {'class': 'border border-black rounded-md'}}) }}
+                <div class="flex flex-col justify-between items-stretch mt-10">
+                    {{ form_label(loginForm.password, null, {'label_attr': {'class': 'text-slate-700'}}) }}
+                    {{ form_widget(loginForm.password, {'attr': {'class': 'border border-slate-600 h-16 text-3xl mt-5'}}) }}
                 </div>
-                <div class="form-group">
-                    {{ form_widget(loginForm.submit) }}
+                <div class="w-full mt-10 ">
+                    {{ form_widget(loginForm.submit, {'attr': {'class': 'text-white w-full bg-gray-600 h-16 text-lg'}}) }}
+                    <input type="hidden" name="_csrf_token"
+                           value="{{ csrf_token('authenticate') }}"
+                    >
                 </div>
                 {{ form_end(loginForm) }}
+                <div class="w-full flex items-center justify-center mt-10">
+                    <a href="/register" class="underline text-slate-700">Pas encore de compte ? S'inscrire</a>
+                </div>
             </div>
         </div>
     </div>

@@ -27,9 +27,14 @@
         >
             <div class="py-1" role="none">
                 <a href="/" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-0">Nos Produits</a>
-                <a href="/user/1/basket" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-1">Mon panier</a>
-                <a href="/user/1/account" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-2">Mon compte</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-2">Déconnexion</a>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <a href="/user/1/basket" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1">Mon panier</a>
+                    <a href="/user/1/account" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1">Mon compte</a>
+                    <a href="{{ path('app_logout') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1">Déconnexion</a>
+                {% else %}
+                    <a href="/register" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1">Inscription</a>
+                    <a href="/login" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1">Connexion</a>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -37,9 +42,14 @@
     <!-- Navigation -->
     <nav class="hidden md:flex w-7/12 max-w-custom-600 justify-between" id="nav-menu">
         <a href="/">Nos Produits</a>
-        <a href='/user/1/basket'>Mon panier</a>
-        <a href='/user/1/account'>Mon compte</a>
-        <a href='#'>Déconnexion</a>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <a href="/user/1/basket">Mon panier</a>
+            <a href="/user/1/account">Mon compte</a>
+            <a href="{{ path('app_logout') }}">Déconnexion</a>
+        {% else %}
+            <a href="/register">Inscription</a>
+            <a href="/login">Connexion</a>
+        {% endif %}
     </nav>
 </div>
 
