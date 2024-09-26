@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,9 +12,8 @@ use Symfony\Component\Routing\Attribute\Route;
 class HomeController extends AbstractController
 {
     #[Route('/')]
-    public function __invoke(EntityManagerInterface $manager): Response
+    public function __invoke(ProductRepository $productRepository): Response
     {
-        $productRepository = $manager->getRepository(Product::class);
         $products = $productRepository->findAll();
 
         return $this->render('home.html.twig', ['products' => $products]);

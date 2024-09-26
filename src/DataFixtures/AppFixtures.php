@@ -37,8 +37,14 @@ class AppFixtures extends Fixture
 
             $user->setFirstName(self::FIRST_NAMES[$i]);
             $user->setLastName(self::LAST_NAMES[$i]);
-            $user->setMail($user->getFirstName() . $user->getLastName() . "@gmail.com");
+            $user->setEmail($user->getFirstName() . $user->getLastName() . "@gmail.com");
             $user->setPassword(password_hash($password, PASSWORD_DEFAULT));
+
+            if ($i % 2 === 0) {
+                $user->setRoles(['ROLE_USER', 'ROLE_ADMIN']);
+            } else {
+                $user->setRoles(['ROLE_USER']);
+            }
 
             $manager->persist($user);
         }
