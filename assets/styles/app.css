@@ -72,13 +72,21 @@ body {
     justify-content: center;
 }
 
-.product-item-btn {
+.custom-btn {
     width: 100%;
     max-width: 400px;
     height: 50px;
     background-color: #565656;
     color: #ffffff;
     border: none;
+}
+
+.custom-btn:hover {
+    background-color: #878383;
+}
+
+.custom-background {
+    background-color: #f7f1ec;
 }
 
 @media only screen and (max-width: 768px) {

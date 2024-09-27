@@ -1,7 +1,11 @@
 
 <div class="flex flex-col-reverse  lg:flex-row">
     <div class="banner-text-container">
-        <h1 class="mb-5">Bienvenue</h1>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <h1 class="mb-5">Bienvenue {{ app.user.firstName }}</h1>
+            {% else %}
+                <h1 class="mb-5">Bienvenue</h1>
+        {% endif %}
         <h2  class="mb-5">
             Découvrez notre univers de produits durables et éthiques pour une consommation responsable
         </h2>

@@ -1,5 +1,7 @@
 <div class="min-h-28 flex flex-row justify-between items-center px-12">
-    <img src="{{ asset('build/images/logo.webp') }}" alt="logo" />
+    <a href="/">
+        <img src="{{ asset('build/images/logo.webp') }}" alt="logo" />
+    </a>
     <div  class="md:hidden relative inline-block text-left">
         <div>
             <!-- Bouton déclencheur -->
@@ -28,8 +30,8 @@
             <div class="py-1" role="none">
                 <a href="/" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="menu-item-0">Nos Produits</a>
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <a href="/user/1/basket" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1">Mon panier</a>
-                    <a href="/user/1/account" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1">Mon compte</a>
+                    <a href="/user/{{ app.user.id }}/basket" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1">Mon panier</a>
+                    <a href="/user/{{ app.user.id }}/account" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1">Mon compte</a>
                     <a href="{{ path('app_logout') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1">Déconnexion</a>
                 {% else %}
                     <a href="/register" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1">Inscription</a>
@@ -43,8 +45,8 @@
     <nav class="hidden md:flex w-7/12 max-w-custom-600 justify-between" id="nav-menu">
         <a href="/">Nos Produits</a>
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <a href="/user/1/basket">Mon panier</a>
-            <a href="/user/1/account">Mon compte</a>
+            <a href="/user/{{ app.user.id }}/basket">Mon panier</a>
+            <a href="/user/{{ app.user.id }}/account">Mon compte</a>
             <a href="{{ path('app_logout') }}">Déconnexion</a>
         {% else %}
             <a href="/register">Inscription</a>

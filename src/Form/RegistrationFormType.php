@@ -26,6 +26,12 @@ class RegistrationFormType extends AbstractType
                     new NotBlank([
                         'message' => 'Veuillez entrer votre prénom',
                     ]),
+                    new Length([
+                        'min' => 2,
+                        'minMessage' => 'Votre prénom doit faire au moins {{ limit }} caractères',
+                        'max' => 50,
+                        'maxMessage' => "Votre prénom doit faire moins de 50 caractères"
+                    ]),
                 ],
             ])
             ->add('lastName', TextType::class, [
@@ -33,6 +39,12 @@ class RegistrationFormType extends AbstractType
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez entrer votre nom',
+                    ]),
+                    new Length([
+                        'min' => 2,
+                        'minMessage' => 'Votre nom doit faire au moins {{ limit }} caractères',
+                        'max' => 50,
+                        'maxMessage' => "Votre nom doit faire moins de 50 caractères"
                     ]),
                 ],
             ])
@@ -58,7 +70,8 @@ class RegistrationFormType extends AbstractType
                     new Length([
                         'min' => 6,
                         'minMessage' => 'Votre mot de passe doit faire au moins {{ limit }} caractères',
-                        'max' => 4096,
+                        'max' => 50,
+                        'maxMessage' => "Votre mot de passe doit faire moins de 50 caractères"
                     ]),
                 ],
             ])

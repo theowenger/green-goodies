@@ -3,5 +3,39 @@
 {% block title %}Mon compte{% endblock %}
 
 {% block body %}
-    <h1>account</h1>
+    <div class="flex flex-col items-center custom-background pt-7">
+        <h1 class="text-3xl font-semibold">Mon compte</h1>
+
+        <div class="flex flex-col bg-white w-full md:w-4/6 my-10 p-10">
+            <h2 class="font-semibold">Mes commandes</h2>
+            {% if commands is not empty %}
+                    <ul class="grid grid-cols-3 gap-0 gap-y-4 mt-8 text-left">
+                        <li class="text-gray-700">N°</li>
+                        <li class="text-gray-700 text-center">Date</li>
+                        <li class="text-gray-700 text-right mr-3">Prix</li>
+
+                        {% for command in commands %}
+                            <li class="border-b-2 py-6">{{ command.id }}</li>
+                            <li class="text-center border-b-2  py-6">{{ command.date|date('d/m/Y') }}</li>
+                            <li class="text-right border-b-2  py-6">{{ command.totalPrice }} €</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% else %}
+                <p>Aucune commande trouvée.</p>
+            {% endif %}
+
+        <div class="flex flex-col bg-white w-full md:w-4/6 my-10 p-10">
+            <h2>Mon accès API</h2>
+            <button class="custom-btn mt-8 ml-auto mr-auto">
+                Activer mon accès API
+            </button>
+        </div>
+
+        <div class="flex flex-col items-center bg-white w-full md:w-4/6 my-10 p-10">
+            <button class="custom-btn">
+                Supprimer mon compte
+            </button>
+        </div>
+    </div>
 {% endblock %}
