@@ -9,33 +9,51 @@
         <div class="flex flex-col bg-white w-full md:w-4/6 my-10 p-10">
             <h2 class="font-semibold">Mes commandes</h2>
             {% if commands is not empty %}
-                    <ul class="grid grid-cols-3 gap-0 gap-y-4 mt-8 text-left">
-                        <li class="text-gray-700">N°</li>
-                        <li class="text-gray-700 text-center">Date</li>
-                        <li class="text-gray-700 text-right mr-3">Prix</li>
+            <ul class="grid grid-cols-3 gap-0 gap-y-4 mt-8 text-left">
+                <li class="text-gray-700">N°</li>
+                <li class="text-gray-700 text-center">Date</li>
+                <li class="text-gray-700 text-right mr-3">Prix</li>
 
-                        {% for command in commands %}
-                            <li class="border-b-2 py-6">{{ command.id }}</li>
-                            <li class="text-center border-b-2  py-6">{{ command.date|date('d/m/Y') }}</li>
-                            <li class="text-right border-b-2  py-6">{{ command.totalPrice }} €</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            {% else %}
-                <p>Aucune commande trouvée.</p>
-            {% endif %}
+                {% for command in commands %}
+                    <li class="border-b-2 py-6">{{ command.id }}</li>
+                    <li class="text-center border-b-2  py-6">{{ command.date|date('d/m/Y') }}</li>
+                    <li class="text-right border-b-2  py-6">{{ command.totalPrice }} €</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% else %}
+            <p>Aucune commande trouvée.</p>
+        {% endif %}
 
         <div class="flex flex-col bg-white w-full md:w-4/6 my-10 p-10">
             <h2>Mon accès API</h2>
-            <button class="custom-btn mt-8 ml-auto mr-auto">
-                Activer mon accès API
-            </button>
+            <form id="activate-api-form" class="w-full flex flex-col items-center"  action="{{ path('activate_api') }}"
+              method="POST" onsubmit="return confirmActivate();">
+                <button class="custom-btn mt-8 ml-auto mr-auto">
+                    {{ isAPIActive ? 'Désactiver mon accès API' : 'Activer mon accès API' }}
+                </button>
+            </form>
         </div>
 
         <div class="flex flex-col items-center bg-white w-full md:w-4/6 my-10 p-10">
-            <button class="custom-btn">
-                Supprimer mon compte
-            </button>
+            <form id="delete-account-form" class="w-full flex flex-col items-center" action="{{ path('delete_user') }}"
+                  method="POST" onsubmit="return confirmDeletion();">
+                <button type="submit" class="custom-btn">
+                    Supprimer mon compte
+                </button>
+            </form>
         </div>
     </div>
+
+    <script>
+        function confirmActivate() {
+            return confirm("Vous allez activer l'API, confirmer ?");
+        }
+
+        function confirmDeletion() {
+            return confirm("Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.");
+        }
+    </script>
+
 {% endblock %}
+

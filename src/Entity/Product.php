@@ -34,7 +34,7 @@ class Product
     /**
      * @var Collection<int, Command>
      */
-    #[ORM\ManyToMany(targetEntity: Command::class, mappedBy: 'products')]
+    #[ORM\ManyToMany(targetEntity: Command::class, mappedBy: 'products',  cascade: ['remove'])]
     private Collection $commands;
 
     public function __construct()

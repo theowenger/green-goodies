@@ -42,6 +42,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(nullable: true)]
     private ?int $postalCode = null;
 
+    #[ORM\Column(type: 'boolean')]
+    private ?bool $isAPIActive = false;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -152,4 +155,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function getIsAPIActive(): ?bool
+    {
+        return $this->isAPIActive;
+    }
+
+    public function setIsAPIActive(?bool $isAPIActive): self
+    {
+        $this->isAPIActive = $isAPIActive;
+        return $this;
+    }
+
 }

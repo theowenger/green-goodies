@@ -3,7 +3,7 @@
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
-    <div class="flex flex-col md:flex-row justify-between w-full">
+    <div class="flex flex-col md:flex-row justify-between w-full custom-background">
         <img class="w-full max-h-64 md:w-3/6 md:max-h-[900px] object-cover"
              src="{{ asset('build/images/register.webp') }}" alt="plant"/>
         <div class=" w-full flex flex-col justify-start items-center pt-5 md:pt-10">
@@ -15,36 +15,36 @@
 
                 <div class="flex flex-col justify-between items-stretch w-full mt-5">
                     {{ form_label(registrationForm.lastName, 'Nom') }}
-                    {{ form_widget(registrationForm.lastName, {'attr': {'class': 'border border-slate-600 h-16 text-3xl mt-2'}}) }}
+                    {{ form_widget(registrationForm.lastName, {'attr': {'class': 'border border-slate-600 h-16 text-3xl mt-2 custom-background-form'}}) }}
                     {{ form_errors(registrationForm.lastName) }}
                 </div>
 
                 <div class="flex flex-col justify-start items-stretch w-full mt-5">
                     {{ form_label(registrationForm.firstName, 'Prénom') }}
-                    {{ form_widget(registrationForm.firstName, {'attr': {'class': 'border border-slate-600 h-16 text-3xl mt-2'}}) }}
+                    {{ form_widget(registrationForm.firstName, {'attr': {'class': 'border border-slate-600 h-16 text-3xl mt-2 custom-background-form'}}) }}
                     {{ form_errors(registrationForm.firstName) }}
                 </div>
 
                 <div class="flex flex-col justify-between items-stretch w-full mt-5">
                     {{ form_label(registrationForm.email, 'Adresse email') }}
-                    {{ form_widget(registrationForm.email, {'attr': {'class': 'border border-slate-600 h-16 text-3xl mt-2'}}) }}
+                    {{ form_widget(registrationForm.email, {'attr': {'class': 'border border-slate-600 h-16 text-3xl mt-2 custom-background-form'}}) }}
                     {{ form_errors(registrationForm.email) }}
                 </div>
 
                 <div class="flex flex-col justify-between items-stretch w-full mt-5">
                     {{ form_label(registrationForm.plainPassword.first, 'Mot de passe') }}
-                    {{ form_widget(registrationForm.plainPassword.first, {'attr': {'class': 'border border-slate-600 h-16 text-3xl mt-2'}}) }}
+                    {{ form_widget(registrationForm.plainPassword.first, {'attr': {'class': 'border border-slate-600 h-16 text-3xl mt-2 custom-background-form'}}) }}
                     {{ form_errors(registrationForm.plainPassword.first) }}
                 </div>
 
                 <div class="flex flex-col justify-between items-stretch w-full mt-5">
                     {{ form_label(registrationForm.plainPassword.second, 'Confirmation mot de passe') }}
-                    {{ form_widget(registrationForm.plainPassword.second, {'attr': {'class': 'border border-slate-600 h-16 text-3xl mt-2'}}) }}
+                    {{ form_widget(registrationForm.plainPassword.second, {'attr': {'class': 'border border-slate-600 h-16 text-3xl mt-2 custom-background-form'}}) }}
                     {{ form_errors(registrationForm.plainPassword.second) }}
                 </div>
 
                 <div class="flex flex-row items-center w-full my-5">
-                    {{ form_widget(registrationForm.agreeTerms) }}
+                    {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'custom-checkbox'}}) }}
                     {{ form_label(registrationForm.agreeTerms) }}
                     {{ form_errors(registrationForm.agreeTerms) }}
                 </div>
@@ -52,6 +52,9 @@
                 <button type="submit" class='text-white w-full bg-gray-600 h-16 text-lg'>S'inscrire</button>
 
                 {{ form_end(registrationForm) }}
+            </div>
+            <div class="w-full flex items-center justify-center mt-10">
+                <a href="/login" class="underline text-slate-700">Déjà un compte ? Se connecter</a>
             </div>
         </div>
     </div>

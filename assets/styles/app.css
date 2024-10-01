@@ -75,7 +75,7 @@ body {
 .custom-btn {
     width: 100%;
     max-width: 400px;
-    height: 50px;
+    height: 70px;
     background-color: #565656;
     color: #ffffff;
     border: none;
@@ -87,6 +87,23 @@ body {
 
 .custom-background {
     background-color: #f7f1ec;
+}
+
+.custom-background-form {
+    background-color: #f7f1ec;
+    transition: background-color 0.3s ease;
+}
+
+.custom-background-form:hover,
+.custom-background-form:focus {
+    background-color: white;
+}
+
+.custom-checkbox {
+    width: 15px;
+    height: 15px;
+    transform: scale(1.5);
+    margin-right: 10px;
 }
 
 @media only screen and (max-width: 768px) {

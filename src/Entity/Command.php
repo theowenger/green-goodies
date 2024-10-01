@@ -23,7 +23,7 @@ class Command
     private ?float $totalPrice = null;
 
     #[ORM\ManyToOne(inversedBy: 'commands')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: "CASCADE")]
     private ?User $user = null;
 
     /**

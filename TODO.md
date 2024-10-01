@@ -11,7 +11,7 @@
  - gerer le hash du password **CHECK**
 - securiser les controllers via le ROLE !!! **CHECK**
   - gerer la config de webpack pour minifier CSS + JS
-- gerer le JWT
+- gerer le JWT **CHECK**
 - implementer le refresh token
 - si le temps, ameliorer les fixtures pour + d'aleatoire
 - ...
@@ -21,24 +21,22 @@
  - creer les pages principales **CHECK**
  - creer header **CHECK**
  - creer footer **CHECK**
- - creer les composants
-
- - CHANGER LES VALEURS EN DUR HEADER: <a href='/user/1/basket'>
- - pour l'ecart sur la list porudct, voir width 33.333%
+ - creer les composants **CHECK**
+ - CHANGER LES VALEURS EN DUR HEADER: **CHECK**
+ - pour l'ecart sur la list porudct, **CHECK**
 
 # Components:
 
-- navigation **CHECK (manque le responsive)**
+- navigation **CHECK**
 - hero header **CHECK**
 - footer **CHECK**
 - product list **CHECK**
-- product item
-- form add product
-- form login VOIR MAKE:AUTHENTICATE
-- form subscribe
+- product item **CHECK**
+- form login VOIR MAKE:AUTHENTICATE **CHECK**
+- form subscribe **CHECK**
 - « Déjà un compte ? Se connecter »
-- panier list
-- command list history
+- panier list **CHECK**
+- command list history **CHECK**
 
 # Questions pour David:
 

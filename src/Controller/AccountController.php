@@ -13,14 +13,14 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class AccountController extends AbstractController
 {
-    #[Route('/user/{id}/account', name: 'account')]
+    #[Route('/user/account', name: 'account')]
     public function index(CommandRepository $commandRepository, Security $security): Response
     {
         /** @var User $user */
         $user = $security->getUser();
 
-        $commands = $commandRepository->findBy(['user' => $user]);
+        $commands = $commandRepository->findBy(['user' => $user], ['id' => 'DESC'] );
 
-        return $this->render('account.html.twig', ['commands' => $commands]);
+        return $this->render('account.html.twig', ['commands' => $commands, 'isAPIActive' => $user->getIsAPIActive()]);
     }
 }

@@ -3,18 +3,36 @@
 {% block title %}produit{% endblock %}
 
 {% block body %}
-    <div class="flex flex-col lg:flex-row justify-between mb-96">
+    <div class="flex flex-col lg:flex-row justify-between lg:pb-10 custom-background">
         <img class="lg:w-3/6 object-cover" src="{{ product.picture }}" alt="{{ product.name }}">
-        <div class=" flex flex-col justify-between w-full max-w-[800px] mt-10 lg:mt-48 lg:mr-16 ml-10">
+        <div class=" flex flex-col justify-between w-full max-w-[800px] mt-10 lg:mt-48 lg:mr-16 lg:ml-10">
             <div class="px-5">
                 <h3 class="font-medium text-3xl">{{ product.name }}</h3>
                 <p class="text-5xl font-light py-14">{{ product.price }}€</p>
                 <p>Description</p>
                 <p class="product-item-description">{{ product.fullDescription }}</p>
             </div>
-            <div class="product-item-btn-container">
-                <button class="custom-btn">Ajouter au panier</button>
-            </div>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <div class="product-item-btn-container mt-8">
+                    <form class="flex flex-col items-center justify-center w-72"
+                          action="{{ path('add_to_basket', { id: product.id }) }}" method="POST">
+                        <div class="w-full flex flex-row justify-between">
+                            <label for="quantity">Quantité: </label>
+                            <input type="number" id="quantity" name="quantity" value={{ quantity }} min="1" max="99"
+                                   class="custom-input w-9/12 text-center">
+                        </div>
+                        {% if inBasket %}
+                            <button type="submit" class="custom-btn">Mettre à jour</button>
+                        {% else %}
+                            <button type="submit" class="custom-btn">Ajouter au panier</button>
+                        {% endif %}
+                    </form>
+                </div>
+            {% else %}
+                <div class="product-item-btn-container mt-8">
+                    <a href="/login" class="custom-btn flex items-center justify-center">Se connecter</a>
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
