@@ -24,8 +24,6 @@ class ConfirmCommandController extends AbstractController
 
         $basket = $session->get('basket', []);
 
-        dump($basket);
-
         $command = new Command();
 
         $command->setUser($user);
@@ -33,11 +31,10 @@ class ConfirmCommandController extends AbstractController
 
         $totalPrice = 0;
         foreach ($basket as $article) {
-            dump($article);
             $product = $entityManager->getRepository(Product::class)->find($article['id']);
             if ($product) {
                 $command->addProduct($product);
-                $totalPrice += $product->getPrice();
+                $totalPrice += $product->getPrice() * $article['quantity'];
             }
         }
         $command->setTotalPrice($totalPrice);

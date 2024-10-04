@@ -10,7 +10,7 @@
  - creer fixtures **CHECK**
  - gerer le hash du password **CHECK**
 - securiser les controllers via le ROLE !!! **CHECK**
-  - gerer la config de webpack pour minifier CSS + JS
+  - gerer la config de webpack pour minifier CSS + JS **CHECK**
 - gerer le JWT **CHECK**
 - implementer le refresh token
 - si le temps, ameliorer les fixtures pour + d'aleatoire
@@ -34,13 +34,13 @@
 - product item **CHECK**
 - form login VOIR MAKE:AUTHENTICATE **CHECK**
 - form subscribe **CHECK**
-- « Déjà un compte ? Se connecter »
+- « Déjà un compte ? Se connecter » **CHECK**
 - panier list **CHECK**
 - command list history **CHECK**
 
 # Questions pour David:
 
-- gerer la redirection en 404
+- gerer la redirection en 404 **CHECK**
 
 # Entity:
 
@@ -53,7 +53,7 @@ firstName **CHECK**
 lastName **CHECK**
 adresse postale **CHECK**
 ROLES **CHECK**
-Rajouter isAPIActivated en attribut true/false, pas default FALSE
+Rajouter isAPIActivated en attribut true/false, pas default FALSE **CHECK**
 
 
 ## PRODUCT:
@@ -81,4 +81,4 @@ dans command_product
  - subscribe **CHECK**
  - panier **CHECK**
  - account **CHECK**
- - 404 **Manque la redirection**
+ - 404 **CHECK** (route "http://localhost:8340/_error/404")
